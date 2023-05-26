@@ -11,7 +11,6 @@ function pickWord() {
   word = words[Math.floor(Math.random() * words.length)];
 }
 
-// Start the game once the page is fully loaded
 window.onload = function() {
   pickWord();
   displayWord();
@@ -37,8 +36,8 @@ function resetGame() {
   guesses = [];
   wrongGuesses = 0;
   document.getElementById('hangmanpic').src = 'hangman1.png';
-  document.getElementById('guessedLetters').textContent = '';  // Clear the guessed letters list
-  document.getElementById('status').textContent = '';  // Clear the status message
+  document.getElementById('guessedLetters').textContent = '';  
+  document.getElementById('status').textContent = '';  
   pickWord();
   displayWord();
 }
@@ -47,7 +46,7 @@ function resetGame() {
 function guessWholeWord() {
   var guessWordInput = document.getElementById('guessWord');
   var guess = guessWordInput.value;
-  guessWordInput.value = ''; // Clear the input field
+  guessWordInput.value = ''; 
 
   if (guess === word) {
     alert('Congratulations! You guessed the word.');
@@ -59,7 +58,7 @@ function guessWholeWord() {
 function guessSingleLetter() {
   var guessLetterInput = document.getElementById('guessLetter');
   var guess = guessLetterInput.value;
-  guessLetterInput.value = ''; // Clear the input field
+  guessLetterInput.value = ''; 
 
   if (guesses.includes(guess)) {
     alert('You already guessed that letter!');
@@ -75,14 +74,14 @@ function guessSingleLetter() {
     displayWord();
     if (!document.getElementById('word').textContent.includes('_')) {
       alert('Congratulations! You guessed the word.');
-      // No need to reset the game here. It will reset when the "Reset Game" button is clicked
+      
     }
   } else {
     wrongGuesses++;
     displayHangmanImage();
     if (wrongGuesses === maxWrongGuesses) {
       document.getElementById('status').textContent = 'You Lost!';
-      // No need to reset the game here. It will reset when the "Reset Game" button is clicked
+      
     } else {
       alert('Sorry, that letter is not in the word. Keep guessing!');
     }
